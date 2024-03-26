@@ -1,21 +1,18 @@
 import json
-import random
 import statistics
-from funcion_ayuda import random_array as ra
-
-(open("edades.json"))
+from funcion_indices import random_array as ra
 
 poblacion = json.load(open("edades.json")) 
 
-def muestreo_aleatorio_probabilistico(cantidad_muestra, cantidad_poblacion):
-    if cantidad_muestra < len(cantidad_poblacion):
+def muestreo_aleatorio_probabilistico(cantidad_muestra, poblacion_datos):
+    if cantidad_muestra < len(poblacion_datos):
         muestra = []
 
-        list_index = ra(cantidad_muestra, cantidad_poblacion)
+        list_index = ra(cantidad_muestra, poblacion_datos)
 
-        for _i in range(0, len(cantidad_poblacion)):
+        for _i in range(0, len(poblacion_datos)):
             if _i in list_index:
-                muestra.append(cantidad_poblacion[_i]["age"])
+                muestra.append(poblacion_datos[_i]["age"])
 
         print("La muestra es de ", len(list_index), " individuos son: ", list_index)
 
